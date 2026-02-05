@@ -1,7 +1,5 @@
 from deep_translator import GoogleTranslator
 from gtts import gTTS
-import speech_recognition as sr
-import pyttsx3
 import os
 import requests
 import textwrap
@@ -176,14 +174,6 @@ import pyttsx3
 
 engine = pyttsx3.init()
 
-def listen_to_user():
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        audio = r.listen(source)
-    try:
-        return r.recognize_google(audio)
-    except:
-        return "Sorry, I could not understand."
 
 from gtts import gTTS
 
