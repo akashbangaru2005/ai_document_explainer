@@ -1,0 +1,7 @@
+openai
+PyPDF2
+streamlit
+deep-translator
+gTTS
+SpeechRecognition
+pyaudio
