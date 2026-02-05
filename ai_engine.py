@@ -6,6 +6,7 @@ import textwrap
 
 
 
+
 # Configuration for Hugging Face API
 API_URL = "https://router.huggingface.co/hf-inference/models/google/flan-t5-large"
 
@@ -169,10 +170,9 @@ def answer_question(question, chunks):
         if question.lower().split()[0] in s.lower():
             return s.strip()
     return "The document discusses this topic, but no exact sentence match was found."
-import speech_recognition as sr
-import pyttsx3
 
-engine = pyttsx3.init()
+
+
 
 
 from gtts import gTTS
@@ -182,7 +182,5 @@ def speak_english(text):
     tts = gTTS(text=text, lang='en')
     tts.save(filename)
     return filename
-
-
 def speak_telugu_voice(text):
     return speak_telugu(text)

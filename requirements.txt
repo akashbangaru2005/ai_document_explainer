@@ -1,7 +1,4 @@
-openai
-PyPDF2
-streamlit
-deep-translator
-gTTS
-SpeechRecognition
-pyaudio
+streamlit==1.35.0
+deep-translator==1.11.4
+gTTS==2.5.1
+PyPDF2==3.0.1

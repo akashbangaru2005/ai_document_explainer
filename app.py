@@ -2,7 +2,7 @@ import streamlit as st
 import os
 from document_loader import load_document
 from text_processor import clean_text, split_into_chunks
-from ai_engine import summarize_doc, extract_key_points, answer_question, listen_to_user, speak_english, speak_telugu_voice, to_telugu
+from ai_engine import summarize_doc, extract_key_points, answer_question, speak_telugu_voice, to_telugu
 
 
 # Set page configuration
@@ -231,44 +231,6 @@ if uploaded_file is not None:
                 st.markdown(f"**🤖 AI:** {msg}")
     else:
         st.info("No questions asked yet. Start a conversation!")
-            # ---------- VOICE CHAT FEATURE ----------
-    st.divider()
-    st.subheader("🎙 Voice Chat with AI (Speak Naturally)")
-
-    if st.button("🎤 Talk to AI"):
-        if st.session_state.processed_chunks:
-            with st.spinner("Listening to you..."):
-                question = listen_to_user()
-
-            st.write("**You said:**", question)
-
-            with st.spinner("AI is thinking..."):
-                answer = answer_question(question, st.session_state.processed_chunks)
-
-        # Translate to Telugu
-            telugu_answer = to_telugu(answer)
-
-            st.session_state.chat_history.append(("You", question))
-            st.session_state.chat_history.append(("AI", telugu_answer))
-
-            st.markdown("**🤖 AI (Telugu):** " + telugu_answer)
-
-            # Speak Telugu
-            telugu_audio = speak_telugu_voice(telugu_answer)
-            st.audio(telugu_audio)
-
-
-            # Speak English answer
-            english_audio = speak_english(answer)
-
-            st.markdown("🔊 English Voice")
-            st.audio(english_audio)
-
-            st.markdown("🔊 Telugu Voice")
-            st.audio(telugu_audio)
-
-        else:
-            st.warning("Please upload and process a document first.")
 
 
 else:
